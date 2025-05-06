@@ -35,7 +35,7 @@
                             <h4 class="card-title">Daftar Dokumen Syarat</h4>
                             <a class="btn btn-primary btn-round ms-auto" href="{{ route('dokumen.create') }}">
                                 <i class="fa fa-plus"></i>
-                                Add Row
+                                Tambah Dokumen
                             </a>
                         </div>
                     </div>

@@ -78,7 +78,7 @@
     $("#form-simpan").on("submit", function (e) {
         e.preventDefault();
         let form = $(this);
-
+// buatkan 
         $.ajax({
             url: form.attr("action"),
             type: "POST",

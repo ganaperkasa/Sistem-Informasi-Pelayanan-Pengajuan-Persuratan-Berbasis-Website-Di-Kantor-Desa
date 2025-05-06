@@ -59,7 +59,18 @@
                                         <td>{{ $p->user->name }}</td>
                                         <td>{{ $p->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $p->surat->jenis_surat ?? '-' }}</td>
-                                        <td>{{ ucfirst($p->status) }}</td>
+                                        <td> 
+                                            @if($p->status == 'selesai')
+                                                <span class="badge badge-success">Selesai</span>
+                                            @elseif($p->status == 'diproses')
+                                                <span class="badge badge-primary">Proses</span>
+                                            
+                                            @elseif($p->status == 'ditolak')
+                                                <span class="badge badge-danger">Ditolak</span>
+                                            @elseif($p->status == 'pending')
+                                                <span class="badge badge-warning">Pending</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.pengajuan.show', $p->id) }}" class="btn btn-info btn-sm">Detail</a>
                                         </td>
