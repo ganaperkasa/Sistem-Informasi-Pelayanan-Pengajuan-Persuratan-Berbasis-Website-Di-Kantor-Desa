@@ -6,9 +6,9 @@
     <title>Desa Maduretno - Portal Layanan Pengajuan Surat</title>
     <style>
         :root {
-            --primary-color: #2C5F2D;
-            --secondary-color: #97BE11;
-            --accent-color: #FFE77A;
+            --primary-color: #2c355f;
+            --secondary-color: #11bebe;
+            --accent-color: #7ac8ff;
             --dark-color: #333333;
             --light-color: #F5F5F5;
         }
@@ -251,7 +251,7 @@
         }
 
         .stats {
-            background: linear-gradient(rgba(44, 95, 45, 0.9), rgba(44, 95, 45, 0.9)), url('/api/placeholder/1200/400') center/cover fixed no-repeat;
+            background: linear-gradient(rgba(44, 95, 93, 0.9), rgba(44, 95, 94, 0.9)), url('/api/placeholder/1200/400') center/cover fixed no-repeat;
             color: white;
             text-align: center;
         }

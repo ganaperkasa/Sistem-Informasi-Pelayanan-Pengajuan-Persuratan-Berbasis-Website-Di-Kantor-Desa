@@ -26,7 +26,25 @@
             }
         });
     </script>
+    <style>
+        body.login {
+            background-image: url('{{ asset('assets/img/kantor.jpg') }}');
+            background-size: cover;
+            background-position: center;
+        }
 
+        body.login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+</style>
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
@@ -38,50 +56,72 @@
         <div class="container container-login animated fadeIn">
             <h3 class="text-center">Sign Up</h3>
             <div class="login-form">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('register.post') }}">
                     @csrf
-                    <div class="login-form">
-                        <div class="form-group">
-                            <label for="fullname"><b>Fullname</b></label>
-                            <input id="fullname" name="fullname" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email"><b>Email</b></label>
-                            <input id="email" name="email" type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="passwordsignin"><b>Password</b></label>
-                            <div class="position-relative">
-                                <input id="passwordsignin" name="passwordsignin" type="password" class="form-control"
-                                    required>
-                                <div class="show-password">
-                                    <i class="icon-eye"></i>
-                                </div>
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="name"><b>Fullname</b></label>
+                        <input  id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" required>
+                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><b>Email</b></label>
+                        <input  id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" required>
+                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><b>Password</b></label>
+                        <div class="position-relative">
+                            <input  id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" required>
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            <div class="show-password">
+                                <i class="icon-eye"></i>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="confirmpassword"><b>Confirm Password</b></label>
-                            <div class="position-relative">
-                                <input id="confirmpassword" name="confirmpassword" type="password" class="form-control"
-                                    required>
-                                <div class="show-password">
-                                    <i class="icon-eye"></i>
-                                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation"><b>Confirm Password</b></label>
+                        <div class="position-relative">
+                            <input  id="password_confirmation" name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            {{-- <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"> --}}
+                            <div class="show-password">
+                                <i class="icon-eye"></i>
                             </div>
                         </div>
-                        <div class="row form-sub m-0">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" name="agree" id="agree">
-                                <label class="form-check-label" for="agree">I Agree the terms and conditions.</label>
-                            </div>
+                    </div>
+                    <div class="row form-sub m-0">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="agree" id="agree">
+                            <label class="form-check-label" for="agree">I Agree the terms and conditions.</label>
                         </div>
-                        <div class="row form-action">
-                            <div class="col-md-6">
-                                <a href="/" id="show-signin"
-                                    class="btn btn-danger btn-link w-100 fw-bold">Cancel</a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="#" class="btn btn-primary w-100 fw-bold">Sign Up</a>
+                    </div>
+                    <div class="row form-action">
+                        <div class="col-md-6">
+                            <a href="/login" id="show-signin" class="btn btn-danger btn-link w-100 fw-bold">Cancel</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary w-100 fw-bold">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>

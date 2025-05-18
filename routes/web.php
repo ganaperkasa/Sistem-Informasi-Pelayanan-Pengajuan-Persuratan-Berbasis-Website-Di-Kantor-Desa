@@ -33,7 +33,12 @@ Route::post('/logout', function () {
 })->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/userdashboard', [DashboardController::class, 'indexuser'])->name('userdashboard');
 
+
+
+Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register.post');
 // --------------------------------------
 // Dashboard
 // --------------------------------------
@@ -53,7 +58,7 @@ Route::middleware('auth')->group(function () {
 // Jenis Surat
 // --------------------------------------
 
-
+Route::get('/pengajuan/{id}/cetak', [SuratController::class, 'cetak'])->name('pengajuan.cetak');
 // --------------------------------------
 // Pengajuan Surat (User)
 //—--------------------------------------
@@ -67,9 +72,12 @@ Route::get('/surat/{id}/edit', [SuratController::class, 'edit'])->name('surat.ed
 Route::put('/surat/{id}', [SuratController::class, 'update'])->name('surat.update');
 Route::delete('/surat/{id}', [SuratController::class, 'destroy'])->name('surat.destroy');
 
+
+
     Route::get('/ajukan-surat', [PengajuanController::class, 'create'])->name('pengajuan.create');
     Route::post('/ajukan-surat', [PengajuanController::class, 'store'])->name('pengajuan.store');
     Route::get('/riwayat', [PengajuanController::class, 'riwayat'])->name('pengajuan.riwayat');
+    Route::get('/pengajuan_terkirim', [PengajuanController::class, 'pengajuan_terkirim'])->name('pengajuan.pengajuan_terkirim');
 
     Route::get('/biodata', [BiodataController::class,'index'])->name('biodata.index');
     Route::post('/biodata-update',[BiodataController::class,'update'])->name('biodata.update');
@@ -105,6 +113,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/pengajuan-surat/{id}', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'show'])->name('admin.pengajuan.show');
     Route::post('/pengajuan-surat/{id}/verifikasi', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'verifikasi'])->name('admin.pengajuan.verifikasi');
 });
+Route::get('/pengajuan-surat/kadsek', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'indexkadsek'])->name('admin.pengajuan.kadsek');
 
 // --------------------------------------
 // Lampiran

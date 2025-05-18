@@ -105,10 +105,20 @@
                             @csrf
                             <!-- @method('PUT') -->
 
+                                                        @php
+                                $userRole = Auth::user()->role; // Ambil peran pengguna yang sedang login
+                            @endphp
+                            @if ($userRole === 'admin')
+
                             <button type="submit" name="status" value="diproses" class="btn btn-warning">Diproses</button>
-                            <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi
-                                (Selesai)</button>
-                            <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
+                            
+
+                            @endif
+                            @if ($userRole === 'kepala_desa' && $pengajuan->surat->kategori === 'Kepala Desa')
+                                <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi (Selesai)</button>
+                                @endif
+                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
+
                             <a href="{{ route('admin.pengajuan.index') }}" class="btn btn-outline-secondary">Kembali</a>
                         </form>
 

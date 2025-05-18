@@ -59,7 +59,7 @@
                                         <td>{{ $p->user->name }}</td>
                                         <td>{{ $p->created_at->format('d-m-Y') }}</td>
                                         <td>{{ $p->surat->jenis_surat ?? '-' }}</td>
-                                        <td> 
+                                        <td>
                                             @if($p->status == 'selesai')
                                                 <span class="badge badge-success">Selesai</span>
                                             @elseif($p->status == 'diproses')

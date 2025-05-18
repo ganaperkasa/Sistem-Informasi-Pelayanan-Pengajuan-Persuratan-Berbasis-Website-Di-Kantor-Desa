@@ -30,7 +30,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Daftar Dokumen Syarat</h4>
-                        
+
                     </div>
                 </div>
                 <div class="card-body"> <!-- Modal -->
@@ -43,6 +43,8 @@
                                     <th>Tanggal Pengajuan</th>
                                     <th>Dokumen</th>
                                     <th>Status</th>
+                                    <th>Cetak</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,6 +74,15 @@
                             @else bg-secondary @endif">
                             {{ ucfirst($pengajuan->status) }}
                         </span>
+                    </td>
+                    <td>
+                        @if ($pengajuan->status === 'selesai')
+                        <a href="{{ route('pengajuan.cetak', $pengajuan->id) }}" class="btn btn-danger btn-sm">
+                            <i class="fa fa-file-pdf"></i> Download PDF
+                        </a>
+                        @else
+                            <span class="text-muted">Belum Tersedia</span>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

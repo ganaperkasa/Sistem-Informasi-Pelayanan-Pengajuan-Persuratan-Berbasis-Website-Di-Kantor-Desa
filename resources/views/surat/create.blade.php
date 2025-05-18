@@ -47,6 +47,14 @@
                                     <input type="text" class="form-control" name="deskripsi_surat" id="deskripsi_surat">
                                 </div>
                                 <div class="form-group">
+                                    <label for="kategori">Kategori Surat</label>
+                            <select name="kategori" id="kategori"class="form-control" required>
+                                <option value="" disabled selected>Pilih Kategori</option>
+                                <option value="Kepala Desa" >Kepala Desa</option>
+                                <option value="Sekretaris Desa" >Sekretaris Desa</option>
+                            </select>
+                        </div>
+                                <div class="form-group">
                                     <div class="form-group">
                                         <label for="dokumen_id">Syarat Surat</label>
                                         <select name="dokumen_id[]" id="dokumen_id" class="form-control" multiple required>

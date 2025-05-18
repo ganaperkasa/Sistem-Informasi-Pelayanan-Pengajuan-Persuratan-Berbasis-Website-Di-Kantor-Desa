@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="page-inner">
+<div class="page-inner flex-fill">
         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <div>
                 <h3 class="fw-bold mb-3">Dashboard</h3>
@@ -12,65 +12,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-info bubble-shadow-small">
-                                    <i class="fas fa-user-check"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Masyarakat</p>
-                                    <h4 class="card-title">{{ $jumlahMasyarakat }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-success bubble-shadow-small">
-                                    <i class="fas fa-file-upload"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Dokumen</p>
-                                    <h4 class="card-title">{{ $jumlahDokumen }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="card card-stats card-round">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col-icon">
-                                <div class="icon-big text-center icon-secondary bubble-shadow-small">
-                                    <i class="fas fa-file-download"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats ms-3 ms-sm-0">
-                                <div class="numbers">
-                                    <p class="card-category">Pengajuan Surat</p>
-                                    <h4 class="card-title">{{ $total }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-6 ">
                 <div class="card card-stats card-round">
@@ -99,7 +40,7 @@
                 <div class="card card-stats card-round">
                     <div class="card-header">
                         <div class="card-head-row card-tools-still-right">
-                          <div class="card-title">Pengajuan Masuk</div>
+                          <div class="card-title">Pengajuan Terkirim</div>
 
                         </div>
                       </div>
@@ -143,29 +84,21 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-md-12">
-                <div class="card card-round">
-                    <div class="card-header">
-                        <div class="card-head-row">
-                            <div class="card-title">Statistik Pengajuan Surat per Bulan</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container" style="min-height: 375px">
-                            <canvas id="chartPengajuan"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{-- ... existing content ... --}}
         </div>
+
+        {{-- Add invisible spacer div --}}
+        <div style="height: 100px; visibility: hidden;"></div>
 
 </div>
 @push('js');
 <!-- Script Circles.js -->
 <script src="https://cdn.jsdelivr.net/npm/circles.js@0.0.6/circles.min.js"></script>
 <!-- Script Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <script>
     // Circles Statistik
@@ -208,58 +141,7 @@
         textClass: 'circles-text',
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById('chartPengajuan');
-    if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
-    const bulanLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-
-    const dataChart = @json($dataChart);
-    const warna = [
-        '#f3545d', '#fdaf4b', '#1d7af3', '#00cae3', '#2BB930',
-        '#9C27B0', '#FFC107', '#3F51B5', '#FF5722', '#009688'
-    ];
-
-    const datasets = [];
-    let i = 0;
-
-    for (const jenis in dataChart) {
-        datasets.push({
-            label: jenis,
-            data: Object.values(dataChart[jenis]),
-            backgroundColor: warna[i % warna.length] + '88',
-            borderColor: warna[i % warna.length],
-            borderWidth: 2,
-            fill: true,
-            tension: 0.4
-        });
-        i++;
-    }
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: bulanLabels,
-            datasets: datasets
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'top' }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1,
-                        precision: 0
-                    }
-                }
-            }
-        }
-    });
-});
 </script>
 
 

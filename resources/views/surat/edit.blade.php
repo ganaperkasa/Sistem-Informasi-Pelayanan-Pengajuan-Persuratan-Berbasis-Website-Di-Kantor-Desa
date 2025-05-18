@@ -47,6 +47,14 @@
                                         value="{{ $surat->deskripsi_surat }}">
                                 </div>
                                 <div class="form-group">
+                                    <label>Kategori Surat</label>
+                                <select name="kategori" class="form-control" required>
+                                    <option value="" disabled selected>Pilih Kategori</option>
+                                    <option value="Kepala Desa" {{ (old('kategori', $surat->kategori ?? '') == 'Kepala Desa') ? 'selected' : '' }}>Kepala Desa</option>
+                                    <option value="Sekretaris Desa" {{ (old('kategori', $surat->kategori ?? '') == 'Sekretaris Desa') ? 'selected' : '' }}>Sekretaris Desa</option>
+                                </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="dokumen_id">Syarat Surat</label>
                                     <select name="dokumen_id[]" id="dokumen_id" class="form-control" multiple required>
                                         @foreach ($dokumens as $dokumen)
