@@ -72,7 +72,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.pengajuan.show', $p->id) }}" class="btn btn-info btn-sm">Detail</a>
+                                            <a href="{{ route('admin.pengajuan.showkadsek', $p->id) }}" class="btn btn-info btn-sm">Detail</a>
                                         </td>
                                     </tr>
                                     @endforeach

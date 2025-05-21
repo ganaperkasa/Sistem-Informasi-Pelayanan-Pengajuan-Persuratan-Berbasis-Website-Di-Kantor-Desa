@@ -53,9 +53,9 @@
                                         <td>
                                             <span
                                                 class="badge
-                          @if ($pengajuan->status === 'selesai') bg-success
-                          @elseif($pengajuan->status === 'ditolak') bg-danger
-                          @else bg-primary @endif">
+                                                @if ($pengajuan->status === 'selesai') bg-success
+                                                @elseif($pengajuan->status === 'ditolak') bg-danger
+                                                @else bg-primary @endif">
                                                 {{ ucfirst($pengajuan->status) }}
                                             </span>
                                         </td>
@@ -100,48 +100,35 @@
                         <div class="card-title">Verifikasi Dokumen</div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('pengajuan.updateStatus', $pengajuan->id) }}" method="POST">
-                            @csrf
-                            @method('PUT') <!-- atau 'POST' jika tidak memakai resource -->
-                            @php
-                            $userRole = Auth::user()->role; // Ambil peran pengguna yang sedang login
-                        @endphp
-                            @if ($userRole === 'admin')
-                                <button type="submit" name="status" value="diproses" class="btn btn-warning">Diproses</button>
-                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
-                            @endif
-                            <a href="{{ route('admin.pengajuan.index') }}" class="btn btn-outline-secondary">Kembali</a>
-                        </form>
-
-                        {{-- <form action="{{ route('admin.pengajuan.verifikasi', $pengajuan->id) }}" method="POST"
+                        <div class="d-flex gap-2 align-items-center">
+                        <form action="{{ route('admin.pengajuan.verifikasi', $pengajuan->id) }}" method="POST"
                             class="d-flex gap-2">
                             @csrf
                             <!-- @method('PUT') -->
-
                             @php
                                 $userRole = Auth::user()->role; // Ambil peran pengguna yang sedang login
                             @endphp
-                            @if ($userRole === 'admin')
-                                <button type="submit" name="status" value="diproses"
-                                    class="btn btn-warning">Diproses</button>
-                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
-                            @endif
                             @if ($userRole === 'kepala_desa' && $pengajuan->surat->kategori === 'Kepala Desa')
                                 <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi
                                     (Selesai)</button>
-                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
+                                {{-- <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button> --}}
                             @endif
                             @if ($userRole === 'sekretaris_desa' && $pengajuan->surat->kategori === 'Sekretaris Desa')
                                 <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi
                                     (Selesai)</button>
-                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
+                                {{-- <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button> --}}
                             @endif
+                        </form>
+                        <form action="{{ route('pengajuan.updateStatus', $pengajuan->id) }}" method="POST">
+                            @csrf
+                            @method('PUT') <!-- atau 'POST' jika tidak memakai resource -->
+                                <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button>
+                        </form>
+                        <a href="{{ route('admin.pengajuan.kadsek') }}" class="btn btn-outline-secondary">Kembali</a>
+                        </div>
 
-                            <a href="{{ route('admin.pengajuan.index') }}" class="btn btn-outline-secondary">Kembali</a>
-                        </form> --}}
 
                     </div>
-
                 </div>
             </div>
         </div>

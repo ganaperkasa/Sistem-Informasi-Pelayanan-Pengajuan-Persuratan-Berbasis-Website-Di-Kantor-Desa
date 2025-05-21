@@ -112,9 +112,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/pengajuan-surat', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'index'])->name('admin.pengajuan.index');
     Route::get('/pengajuan-surat/{id}', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'show'])->name('admin.pengajuan.show');
     Route::post('/pengajuan-surat/{id}/verifikasi', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'verifikasi'])->name('admin.pengajuan.verifikasi');
+    // routes/web.php
+Route::put('/pengajuan/{id}/status', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'updateStatus'])->name('pengajuan.updateStatus');
+
 });
 Route::get('/pengajuan-surat/kadsek', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'indexkadsek'])->name('admin.pengajuan.kadsek');
+Route::get('/pengajuan-kadsek/{id}', [\App\Http\Controllers\Admin\PengajuanSuratController::class, 'showkadsek'])->name('admin.pengajuan.showkadsek');
 
+Route::middleware('auth')->group(function () {
+});
 // --------------------------------------
 // Lampiran
 // --------------------------------------
