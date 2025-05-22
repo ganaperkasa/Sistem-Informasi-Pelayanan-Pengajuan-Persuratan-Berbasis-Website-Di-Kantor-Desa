@@ -572,7 +572,7 @@
                 <div class="testimonial">
                     <p>"Layanan pengajuan surat online ini sangat membantu saya yang sibuk bekerja. Tidak perlu lagi meluangkan waktu khusus ke kantor desa. Prosesnya cepat dan mudah!"</p>
                     <div class="testimonial-author">Ahmad Supriyadi</div>
-                    <div class="testimonial-role">Warga Dusun Makmur</div>
+                    <div class="testimonial-role">Warga Desa Maduretno</div>
                 </div>
             </div>
         </div>

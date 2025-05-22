@@ -61,12 +61,21 @@ class PengajuanSuratController extends Controller
         $pengajuan->save();
 
         // Ambil nomor dari data pengajuan
-        $target = $pengajuan->user_id->no_hp; // Pastikan kolom 'no_hp' tersedia di tabel pengajuans
+        $target = optional(optional($pengajuan->user)->masyarakatProfile)->no_hp;
+ // Pastikan kolom 'no_hp' tersedia di tabel pengajuans
 
         // Cek apakah nomor tersedia
         if ($target) {
             $token = '8YfMDS8FFatVojGHAwW2'; // Token API Fonnte
-            $data = "Pengajuan Anda telah diperbarui.\n\n" ;
+            $data = "Pengajuan surat atas nama: {$pengajuan->user->name}\n";
+            $data .= "Jenis Surat: {$pengajuan->surat->jenis_surat}\n";
+            $data .= "Status: Telah diverifikasi\n";
+            $data .= "Tanggal Verifikasi: " . $pengajuan->updated_at->format('d-m-Y') . "\n\n";
+            $data .= "Silakan buka website kami untuk mencetak surat\n\n";
+            $data .= "Terima kasih.\n";
+            $data .= "Salam,\n";
+            $data .= "Admin Pelayanan Surat Desa";
+
             // $data = "Pengajuan Anda telah diperbarui.\n\n" . 'Status: ' . strtoupper($request->status) . "\n" . 'Nama Pengaju: ' . $pengajuan->nama . "\n" . 'Tanggal: ' . date('d-m-Y H:i:s') . "\n\n" . 'Diproses oleh: ' . Auth::user()->name . ' (NIP: ' . Auth::user()->nip . ')';
             $curl = curl_init();
             curl_setopt_array($curl, [
