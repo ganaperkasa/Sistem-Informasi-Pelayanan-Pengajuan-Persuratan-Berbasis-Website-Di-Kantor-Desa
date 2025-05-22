@@ -28,6 +28,7 @@ class MasyarakatProfile extends Model
         'umur',
         'nis',
         'alamat',
+        'no_hp',
     ];
 
     public function user()

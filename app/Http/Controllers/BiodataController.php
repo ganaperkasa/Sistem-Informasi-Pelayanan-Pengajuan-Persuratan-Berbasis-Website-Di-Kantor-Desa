@@ -83,6 +83,7 @@ class BiodataController extends Controller
             'umur' => $request->umur,
             'nis' => $request->nis,
             'alamat' => $request->alamat_m,
+            'no_hp' => $request->no_hp,
         ]
     );
 

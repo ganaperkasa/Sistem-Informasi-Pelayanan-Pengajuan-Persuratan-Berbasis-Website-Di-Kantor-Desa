@@ -32,7 +32,7 @@
                             <li class="nav-item {{ Request::is('admin/pengajuan-surat') ? 'active' : '' }}">
                                 <a href="/admin/pengajuan-surat">
                                     <i class="fas fa-file-alt"></i>
-                                    <p>Data Pengajuan Surat</p>
+                                    <p>Pengajuan Surat Masuk</p>
                                 </a>
 
                             </li>
@@ -103,7 +103,7 @@
                             <li class="nav-item {{ Request::is('/pengajuan-surat/kadsek') ? 'active' : '' }}">
                                 <a href="/pengajuan-surat/kadsek">
                                     <i class="fas fa-file-alt"></i>
-                                    <p>Data Pengajuan Surat</p>
+                                    <p>Pengajuan Surat Masuk</p>
                                 </a>
                             </li>
                             <li class="nav-item {{ Request::is('tampil-surat') ? 'active' : '' }}">

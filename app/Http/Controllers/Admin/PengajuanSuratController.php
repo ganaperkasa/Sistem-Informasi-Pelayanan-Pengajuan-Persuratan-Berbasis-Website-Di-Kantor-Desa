@@ -61,7 +61,7 @@ class PengajuanSuratController extends Controller
         $pengajuan->save();
 
         // Ambil nomor dari data pengajuan
-        $target = '6289612684096'; // Pastikan kolom 'no_hp' tersedia di tabel pengajuans
+        $target = $pengajuan->user_id->no_hp; // Pastikan kolom 'no_hp' tersedia di tabel pengajuans
 
         // Cek apakah nomor tersedia
         if ($target) {

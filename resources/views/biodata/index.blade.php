@@ -58,9 +58,21 @@
                             <input type="number" name="umur" class="form-control" value="{{ old('umur', $masyarakat->umur ?? '') }}">
                         </div>
                         <div class="form-group mb-2">
-                            <label>Alamat</label>
-                            <textarea name="alamat_m" class="form-control" rows="2">{{ old('alamat_m', $masyarakat->alamat ?? '') }}</textarea>
+                            <label>Pekerjaan</label>
+                            <select name="pekerjaan_m" class="form-select form-control">
+                                <option value="" disabled selected>Pilih Pekerjaan</option>
+                                <option value="Belum/Tidak Bekerja" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Belum/Tidak Bekerja' ? 'selected' : '' }}>Belum/Tidak Bekerja</option>
+                                <option value="Mengurus Rumah Tangga" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Mengurus Rumah Tangga' ? 'selected' : '' }}>Mengurus Rumah Tangga</option>
+                                <option value="Pelajar/Mahasiswa" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pelajar/Mahasiswa' ? 'selected' : '' }}>Pelajar/Mahasiswa</option>
+                                <option value="Pensiunan" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pensiunan' ? 'selected' : '' }}>Pensiunan</option>
+                                <option value="Pegawai Negeri Sipil (PNS)" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pegawai Negeri Sipil (PNS)' ? 'selected' : '' }}>Pegawai Negeri Sipil (PNS)</option>
+                                <option value="Karyawan Swasta" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Karyawan Swasta' ? 'selected' : '' }}>Karyawan Swasta</option>
+                                <option value="Wiraswasta" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Wiraswasta' ? 'selected' : '' }}>Wiraswasta</option>
+                                <option value="Buruh/Tenaga Kerja" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Buruh/Tenaga Kerja' ? 'selected' : '' }}>Buruh/Tenaga Kerja</option>
+                                <option value="Karyawan BUMN/BUMD" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Karyawan BUMN/BUMD' ? 'selected' : '' }}>Karyawan BUMN/BUMD</option>
+                            </select>
                         </div>
+
                     </div>
                     <div class="col-md-4">
                         <div class="form-group mb-2">
@@ -84,8 +96,16 @@
                                 <option value="Bercerai" {{ old('status_perkawinan_m', $masyarakat->status_perkawinan ?? '') == 'Bercerai' ? 'selected' : '' }}>Bercerai</option>
                             </select>
                         </div>
+                        <div class="form-group mb-2">
+                            <label>Alamat</label>
+                            <textarea name="alamat_m" class="form-control" rows="2">{{ old('alamat_m', $masyarakat->alamat ?? '') }}</textarea>
+                        </div>
                     </div>
                     <div class="col-md-4">
+                        <div class="form-group mb-2">
+                            <label>Nomor WhatsApp</label>
+                            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp', $masyarakat->no_hp ?? '') }}">
+                        </div>
                         <div class="form-group mb-2">
                             <label>Kewarganegaraan</label>
                             <input type="text" name="kewarganegaraan_m" class="form-control" value="{{ old('kewarganegaraan_m', $masyarakat->kewarganegaraan ?? '') }}">
@@ -102,21 +122,7 @@
                                 <option value="Konghucu" {{ old('agama_m', $masyarakat->agama ?? '') == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                             </select>
                         </div>
-                        <div class="form-group mb-2">
-                            <label>Pekerjaan</label>
-                            <select name="pekerjaan_m" class="form-select form-control">
-                                <option value="" disabled selected>Pilih Pekerjaan</option>
-                                <option value="Belum/Tidak Bekerja" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Belum/Tidak Bekerja' ? 'selected' : '' }}>Belum/Tidak Bekerja</option>
-                                <option value="Mengurus Rumah Tangga" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Mengurus Rumah Tangga' ? 'selected' : '' }}>Mengurus Rumah Tangga</option>
-                                <option value="Pelajar/Mahasiswa" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pelajar/Mahasiswa' ? 'selected' : '' }}>Pelajar/Mahasiswa</option>
-                                <option value="Pensiunan" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pensiunan' ? 'selected' : '' }}>Pensiunan</option>
-                                <option value="Pegawai Negeri Sipil (PNS)" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Pegawai Negeri Sipil (PNS)' ? 'selected' : '' }}>Pegawai Negeri Sipil (PNS)</option>
-                                <option value="Karyawan Swasta" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Karyawan Swasta' ? 'selected' : '' }}>Karyawan Swasta</option>
-                                <option value="Wiraswasta" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Wiraswasta' ? 'selected' : '' }}>Wiraswasta</option>
-                                <option value="Buruh/Tenaga Kerja" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Buruh/Tenaga Kerja' ? 'selected' : '' }}>Buruh/Tenaga Kerja</option>
-                                <option value="Karyawan BUMN/BUMD" {{ old('pendidikan_m', $masyarakat->pekerjaan ?? '') == 'Karyawan BUMN/BUMD' ? 'selected' : '' }}>Karyawan BUMN/BUMD</option>
-                            </select>
-                        </div>
+
                     </div>
                 </div>
 

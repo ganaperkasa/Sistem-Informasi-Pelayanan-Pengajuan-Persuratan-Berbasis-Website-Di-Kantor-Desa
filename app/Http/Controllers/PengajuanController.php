@@ -125,7 +125,7 @@ class PengajuanController extends Controller
 
 
         $pengajuans = Pengajuan::with(['surat', 'lampiran'])->where('status', '!=', 'selesai')->where('user_id', auth()->id())->latest()->get();
-        return view('pengajuan.riwayat', compact('pengajuans'));
+        return view('pengajuan.pengajuan-terkirim', compact('pengajuans'));
     }
 
 }
