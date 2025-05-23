@@ -108,16 +108,27 @@
                             @php
                                 $userRole = Auth::user()->role; // Ambil peran pengguna yang sedang login
                             @endphp
-                            @if ($userRole === 'kepala_desa' && $pengajuan->surat->kategori === 'Kepala Desa')
-                                <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi
-                                    (Selesai)</button>
-                                {{-- <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button> --}}
+                            @if ($userRole === 'kepala_desa')
+                            @if ($pengajuan->surat->kategori === 'Kepala Desa')
+                                <button type="submit" name="status" value="selesai" class="btn btn-success">
+                                    Verifikasi (Selesai)
+                                </button>
+                            @else
+                                <div class="alert alert-warning mb-0">
+                                    Surat ini hanya dapat diverifikasi oleh Sekretaris Desa.
+                                </div>
                             @endif
-                            @if ($userRole === 'sekretaris_desa' && $pengajuan->surat->kategori === 'Sekretaris Desa')
-                                <button type="submit" name="status" value="selesai" class="btn btn-success">Verifikasi
-                                    (Selesai)</button>
-                                {{-- <button type="submit" name="status" value="ditolak" class="btn btn-danger">Tolak</button> --}}
+                        @elseif ($userRole === 'sekretaris_desa')
+                            @if ($pengajuan->surat->kategori === 'Sekretaris Desa')
+                                <button type="submit" name="status" value="selesai" class="btn btn-success">
+                                    Verifikasi (Selesai)
+                                </button>
+                            @else
+                                <div class="alert alert-warning mb-0">
+                                    Surat ini hanya dapat diverifikasi oleh Kepala Desa.
+                                </div>
                             @endif
+                        @endif
                         </form>
                         <form action="{{ route('pengajuan.updateStatus', $pengajuan->id) }}" method="POST">
                             @csrf

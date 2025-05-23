@@ -64,8 +64,6 @@ class SuratController extends Controller
 
     public function cetak($id)
 {
-    // Matikan error reporting untuk memastikan tidak ada header yang terkirim sebelumnya
-    // yang dapat memblokir unduhan
     error_reporting(0);
 
     try {
@@ -77,11 +75,9 @@ class SuratController extends Controller
         // Ambil data user yang login
         $user = Auth::user();
 
-        // Ambil data masyarakat dan orangtua
         $masyarakat = MasyarakatProfile::where('user_id', $pengajuan->user_id)->first();
         $orangtua = OrangtuaProfile::where('masyarakat_user_id', $pengajuan->user_id)->first();
 
-        // Pilih view berdasarkan jenis_surat_id
         switch ($pengajuan->jenis_surat_id) {
             case 179: // Surat Kelahiran
                 $view = 'surat.penghasilan';

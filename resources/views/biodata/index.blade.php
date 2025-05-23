@@ -27,7 +27,7 @@
       </ul>
     </div>
     <!-- Form Update Biodata (gabungan orang tua dan masyarakat) -->
-    <form action="{{ route('biodata.update') }}" method="POST">
+    <form id="form-simpan" action="{{ route('biodata.update') }}" method="POST">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -294,82 +294,20 @@
     @push('js')
         <script>
             //== Class definition
-      var SweetAlert2Demo = (function () {
-        //== Demos
-        var initDemos = function () {
-          $("#alert_demo_3_3").click(function (e) {
-            swal("Good job!", "You clicked the button!", {
-              icon: "success",
-              buttons: {
+            $("#form-simpan").on("submit", function (e) {
+        e.preventDefault();
+
+        swal("Berhasil!", "Data berhasil diperbarui!", {
+            icon: "success",
+            buttons: {
                 confirm: {
-                  className: "btn btn-success",
+                    className: "btn btn-success",
                 },
-              },
-            });
-          });
-
-          $("#alert_demo_8").click(function (e) {
-            swal({
-              title: "Are you sure?",
-              text: "You won't be able to revert this!",
-              type: "warning",
-              buttons: {
-                cancel: {
-                  visible: true,
-                  text: "No, cancel!",
-                  className: "btn btn-danger",
-                },
-                confirm: {
-                  text: "Yes, delete it!",
-                  className: "btn btn-success",
-                },
-              },
-            }).then((willDelete) => {
-              if (willDelete) {
-                swal("Poof! Your imaginary file has been deleted!", {
-                  icon: "success",
-                  buttons: {
-                    confirm: {
-                      className: "btn btn-success",
-                    },
-                  },
-                });
-              } else {
-                swal("Your imaginary file is safe!", {
-                  buttons: {
-                    confirm: {
-                      className: "btn btn-success",
-                    },
-                  },
-                });
-              }
-            });
-          });
-        };
-
-        return {
-          //== Init
-          init: function () {
-            initDemos();
-          },
-        };
-      })();
-
-      //== Class Initialization
-      jQuery(document).ready(function () {
-        SweetAlert2Demo.init();
-      });
-
-            $(document).ready(function() {
-
-
-                // Add Row
-                $("#add-row").DataTable({
-                    pageLength: 5,
-                });
-
-
-            });
+            },
+        }).then(() => {
+            this.submit(); // submit form setelah klik OK
+        });
+    });
         </script>
     @endpush
 

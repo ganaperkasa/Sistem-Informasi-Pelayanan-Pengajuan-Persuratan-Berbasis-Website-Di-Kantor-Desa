@@ -133,7 +133,7 @@
 
         <div class="title">
             <h3>SURAT KETERANGAN DOMISILI</h3>
-            <p>Nomor : </p>
+            <p>Nomor : 145/0{{$pengajuan->id}}/418.73.11/2025</p>
         </div>
 
         <div class="content">
