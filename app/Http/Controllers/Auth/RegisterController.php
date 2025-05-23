@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\MasyarakatProfile;
+use App\Models\OrangTuaProfile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -73,11 +75,17 @@ class RegisterController extends Controller
             'agree' => 'accepted', // Validasi checkbox
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'masyarakat', // Set role default ke 'masyarakat'
+            'role' => 'masyarakat',
+        ]);
+        MasyarakatProfile::create([
+            'user_id' => $user->id,
+        ]);
+        OrangTuaProfile::create([
+            'masyarakat_user_id' => $user->id,
         ]);
 
         return redirect()->route('login')->with('success', 'Registration successful. Please login.');

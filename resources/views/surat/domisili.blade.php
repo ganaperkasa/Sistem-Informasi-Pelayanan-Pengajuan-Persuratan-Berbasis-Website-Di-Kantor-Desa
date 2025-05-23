@@ -107,6 +107,11 @@
             text-decoration: underline;
             font-weight: bold;
         }
+        .signature-image {
+            width: 100px;
+            height: auto;
+            margin: 0 0 0;
+        }
 
         .qr-code {
             position: absolute;
@@ -275,6 +280,7 @@
                 <p>Maduretno, {{ \Carbon\Carbon::parse($pengajuan->updated_at)->locale('id')->translatedFormat('d F Y') }} </p>
 
                 <p>Kepala Desa Maduretno</p>
+                <img src="{{ public_path('assets/img/Tanda_tangan_bapak.png') }}" alt="Tanda Tangan" class="signature-image">
                 <div class="signature-name">SISWANTO</div>
             </div>
         </div>

@@ -31,6 +31,7 @@
                         <div class="table-responsive">
                             @php
                                 $dataMasyarakatLengkap =
+                                !empty(trim($user->name)) &&
                                     !empty(trim($masyarakat->jenis_kelamin)) &&
                                     !empty(trim($masyarakat->umur)) &&
                                     !empty(trim($masyarakat->nik)) &&
