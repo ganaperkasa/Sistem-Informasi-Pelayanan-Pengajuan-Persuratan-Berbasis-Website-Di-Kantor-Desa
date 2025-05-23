@@ -80,7 +80,7 @@ class SuratController extends Controller
 
         switch ($pengajuan->jenis_surat_id) {
             case 179: // Surat Kelahiran
-                $view = 'surat.penghasilan';
+                $view = 'surat.domisili';
                 $namaFile = 'surat-domisili-' . $pengajuan->id . '.pdf';
                 break;
             case 178: // SKTM Kuliah

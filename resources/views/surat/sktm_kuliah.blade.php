@@ -238,8 +238,8 @@
 
             <div class="signature">
                 <p>Maduretno, {{ \Carbon\Carbon::parse($pengajuan->updated_at)->locale('id')->translatedFormat('d F Y') }} </p>
-
                 <p>Kepala Desa Maduretno</p>
+                
                 <div class="signature-name">SISWANTO</div>
             </div>
         </div>
